@@ -1,0 +1,78 @@
+$small: 500px;
+$medium: 768px;
+$large: 992px;
+$extralarge: 1200px;
+
+.mylist{
+    margin-top: 96px;
+    padding: 0 48px;
+
+    @media screen and (max-width: $small) {
+        margin-top: 120px;
+    }
+
+    .header{
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        margin-top: 72px;
+        color: #B7E4FF;
+        font-size: 22px;
+
+        @media screen and (max-width: $small) {
+            margin-top: 48px;
+            font-size: 16px;
+        }
+
+        .left_header{
+            display: flex;
+            flex-direction: row;
+            justify-content: space-between;
+            align-items: center;
+            gap: 24px;
+
+            .cont{
+                font-size: 16px;
+                color: white;
+                opacity: 0.7;
+                font-weight: 400;
+                cursor: pointer;
+
+                @media screen and (max-width: $small) {
+                    font-size: 12px;
+                }
+
+                &:hover{
+                    color: #B7E4FF;
+                    scale: 1.02;
+                    opacity: 1;
+                }
+            }
+        }
+
+        .edit{
+            color: white;
+            font-size: 16px;
+            cursor: pointer;
+            
+            @media screen and (max-width: $small) {
+                font-size: 10px;
+            }
+
+            &:hover{
+                color: #B7E4FF;
+                scale: 1.1;
+            }
+        }
+    }
+
+    .list_container{
+        display: flex;
+        flex-wrap: wrap;
+        flex-direction: row;
+        justify-content: flex-start;
+        align-items: center;
+        gap: 18px;
+        padding: 56px 0;
+    }
+}

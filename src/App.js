@@ -1,25 +1,29 @@
-import logo from './logo.svg';
-import './App.css';
+import React from 'react'
+import Home from './pages/home/Home'
+import { Routes, Route, Navigate } from 'react-router-dom';
+import SignIn from './pages/login/Login';
+import SignUp from './pages/signup/SignUp';
+import MyList from './pages/myList/MyList';
+import Search from './pages/search/Search';
+import Watch from './pages/watch/Watch';
+import Details from './components/details/Details';
 
-function App() {
+const App = () => {
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
+    <>
+      <Routes>
+        <Route path="/" element= {<Home/>}></Route>
+        <Route path="/movies" element= {<Home type="movies"/>}></Route>
+        <Route path="/series" element= {<Home type="series"/>}></Route>
+        <Route path='/signin' element={<SignIn/>}></Route>
+        <Route path='/signup' element={<SignUp/>}></Route>
+        <Route path='/mylist' element={<MyList/>}></Route>
+        <Route path='/search' element={<Search/>}></Route>
+        <Route path='/watch' element={<Watch/>}></Route>
+        <Route path='/details' element={<Details/>}></Route>
+      </Routes>
+    </>
+  )
 }
 
-export default App;
+export default App

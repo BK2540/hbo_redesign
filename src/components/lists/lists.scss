@@ -1,0 +1,147 @@
+$small: 500px;
+$medium: 768px;
+$large: 992px;
+$extralarge: 1200px;
+
+.lists{
+    display: flex;
+    flex-direction: column;
+
+    margin-top: 72px;
+    position: relative;
+    overflow: hidden;
+
+    @media screen and (max-width: $small) {
+        margin-top: 32px;
+    }
+
+    @media screen and (max-width: $large) {
+        margin-top: 32px;
+    }
+
+
+    .list_head{
+        z-index: 5;
+        padding: 24px 48px;
+        font-size: 14px;
+        color: #B7E4FF;
+        font-weight: 300;
+
+        display: flex;
+        flex-direction: row;
+        align-items: end;
+        justify-content: space-between;
+
+        gap: 900px;
+
+        @media screen and (max-width: $small) {
+            padding: 12px 32px;
+            font-size: 12px;
+        }
+
+        @media screen and (max-width: $large) {
+            padding: 12px 32px;
+            display: flex;
+            justify-content: space-between;
+        }
+
+        .list_title{
+            font-size: 22px;
+            color: white;
+            font-weight: 600;
+
+            @media screen and (max-width: $small) {
+                font-size: 12px;
+            }
+
+            @media screen and (max-width: $large) {
+                font-size: 12px;
+                display: flex;
+            }
+        }
+
+        .explore{
+            @media screen and (max-width: $small) {
+                display: none;
+            }
+
+            @media screen and (max-width: $large) {
+                display: none;
+            }
+        }
+
+
+    }
+
+    .container{
+        display: flex;
+        margin-top: 32px;
+        align-items: center;
+        justify-content: space-between;
+        padding: 0 24px;
+
+        position: relative;
+
+        @media screen and (max-width: $small) {
+            margin-top: 24px;
+        }
+
+        @media screen and (max-width: $large) {
+            margin-top: 24px;
+        }
+
+        .wrapper{
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            gap: 24px;
+            width: max-content;
+            transform: translateX(0px);
+            transition: all 1s ease-in-out;
+
+            @media screen and (max-width: $small) {
+                gap: 12px;
+            }
+
+            @media screen and (max-width: $small) {
+                gap: 12px;
+
+            }
+        }
+
+    .arrow{
+            padding: 12px;
+            z-index: 9;
+            background-color: rgba(14, 14, 14, 0.8);
+            position: sticky;
+            width: 50px;
+            height: 220px;
+
+            @media screen and (max-width: $small) {
+                width: 24px;
+                height: 24px;
+                background-color: rgba(14, 14, 14, 0.2);
+
+            }
+
+            @media screen and (max-width: $large) {
+                width: 24px;
+                height: 24px;
+                background-color: rgba(14, 14, 14, 0.2);
+            }
+            
+
+            &.left{
+                left: 0;
+                color: #B7E4FF;
+                cursor: pointer;
+            }
+
+            &.right{
+                right: 0;
+                color: #B7E4FF;
+                cursor: pointer;
+            }
+        }
+    }
+}
