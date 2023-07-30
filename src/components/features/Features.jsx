@@ -1,10 +1,23 @@
+import React from 'react';
 import { Add, ArrowDownwardRounded, ArrowLeftRounded, ArrowRightRounded, Circle, DownloadOutlined, NearMe, Reply, SendOutlined, SendRounded, ShareOutlined, Star, StarBorderOutlined } from '@mui/icons-material';
 import './features.scss';
 import { featureMovies } from '../../data/movieFeatureData';
 import { motion } from "framer-motion";
 import { useState } from 'react';
+import { Link } from 'react-router-dom';
+import { fetchMoviesByGenre } from '../../store';
+import { useDispatch } from 'react-redux';
 
-const Features = ({type}) => {
+const Features = ({genres, type}) => {
+
+  const dispatch = useDispatch();
+  const [selectedGenre, setSelectedGenre] = useState('');
+
+  const handleGenreChange = (event) => {
+    const selectedGenreId = event.target.value;
+    setSelectedGenre(selectedGenreId);
+    dispatch(fetchMoviesByGenre({ genre: selectedGenreId, type }));
+  };
 
   const transition = {type:"linear", duration:"1"}
   const [selected, setSelected] = useState(0);
@@ -14,27 +27,18 @@ const Features = ({type}) => {
     
     <div className='featues'>
 
-          {type && (
-            <div className="category">
-                <span className='category_type'>{type === "movies" ? "Movies" : "Series"}</span> 
-                <select name="genre" id="genre">
-                    <option>Genre</option>
-                    <option value="adventure">Adventure</option>
-                    <option value="comedy">Comedy</option>
-                    <option value="crime">Crime</option>
-                    <option value="fantasy">Fantasy</option>
-                    <option value="historical">Historical</option>
-                    <option value="horror">Horror</option>
-                    <option value="romance">Romance</option>
-                    <option value="sci-fi">Sci-fi</option>
-                    <option value="thriller">Thriller</option>
-                    <option value="western">Western</option>
-                    <option value="animation">Animation</option>
-                    <option value="drama">Drama</option>
-                    <option value="documentary">Documentary</option>
-                </select>
-            </div>
-          )}
+      {type && genres && genres.length > 0 && ( // Check if genres are available
+        <div className="category">
+          <span className='category_type'>{type === "movies" ? "Movies" : "Series"}</span> 
+          <select name="genre" id="genre" value={selectedGenre} onChange={handleGenreChange}>
+            <option value="">Genres</option>
+            {genres.map(genre => (
+              <option key={genre.id} value={genre.id}>{genre.name}</option>
+            ))}
+          </select>
+        </div>
+      )}
+
       <motion.div 
           className="img_bg"
           key={selected}
@@ -60,7 +64,9 @@ const Features = ({type}) => {
           {featureMovies[selected].desc}
           </span>
           <div className="button_wraper">
+                <Link to="/watch"> 
                 <button className='custom_button'>Watch Now</button>
+                </Link>
                 <button className='normal_button'><NearMe className='btn'/></button>
                 <button className='normal_button'><ArrowDownwardRounded className='btn'/></button>
                 <button className='normal_button'><Add className='btn'/></button>

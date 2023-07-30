@@ -2,17 +2,29 @@ import './navbar.scss';
 import logo from '../../assets/logo.svg';
 import home from '../../assets/home.png';
 import { Add, Search, SearchRounded } from '@mui/icons-material';
-import { Link } from "react-router-dom";
+import { Link, Navigate, useNavigate } from "react-router-dom";
 import { useState } from 'react';
+import { onAuthStateChanged, signOut } from "firebase/auth";
+import { firebaseAuth } from '../../utils/firebase-config';
+
 
 const Navbar = () => {
 
   const [isScroll, setIsScroll] = useState(false); //function to check on scroll or not
+  const navigate = useNavigate();
+
 
   window.onscroll = () => {
       setIsScroll(window.pageYOffset === 0 ? false : true); //if on scroll set isScroll to true
       return () => (window.onscroll = null);
   };
+
+  const handleSignOut = () => {
+    signOut(firebaseAuth);
+    navigate('/signin');
+
+  }
+
 
   return (
     <div className={isScroll ? 'navbar scroll' : 'navbar'}>
@@ -41,6 +53,11 @@ const Navbar = () => {
             <Link to='/signin' className='link'>
               <img src="https://pbs.twimg.com/media/Ef52TYwWkAAqBl3.jpg" 
               alt="userImg" />
+
+                    <div className="options">
+                        <span>Setting</span>
+                        <span onClick={handleSignOut}>Log Out</span>
+                    </div>
             </Link>
             </div>
 

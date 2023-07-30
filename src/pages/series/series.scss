@@ -1,0 +1,14 @@
+$small: 500px;
+$medium: 768px;
+$large: 992px;
+$extralarge: 1200px;
+
+.series{
+    background-color: var(--main-color);
+    width: 100vw;
+
+    @media screen and (max-width: $small) {
+        width: 100vw;
+        margin-bottom: 72px;
+    }
+}

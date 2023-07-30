@@ -73,6 +73,10 @@ $extralarge: 1200px;
                 background-color: #141414;
                 gap: 12px;
 
+                &:hover{
+                    cursor: pointer;
+                }
+
                 @media screen and (max-width: $small) {
                     font-size: 8px;
                     gap: 8px;

@@ -1,11 +1,15 @@
 import { ArrowBackIos, Star, StarBorderOutlined } from '@mui/icons-material';
 import './watch.scss';
+import { useNavigate } from 'react-router-dom';
+import video from '../../assets/video.mp4';
 
 const Watch = () => {
+
+    const navigate = useNavigate()
   return (
     <div className='watch'>
         <div className="back">
-            <ArrowBackIos/>
+            <ArrowBackIos onClick={()=>navigate(-1)}/>
         </div>
 
         <div className="container">
@@ -15,7 +19,7 @@ const Watch = () => {
                 autoPlay
                 progress 
                 controls
-                src="https://player.vimeo.com/external/371433846.sd.mp4?s=236da2f3c0fd273d2c6d9a064f3ae35579b2bbdf&profile_id=139&oauth2_token_id=57447761"
+                src={video}
             />
             </div>
 

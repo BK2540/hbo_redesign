@@ -1,19 +1,39 @@
-import './listItem.scss'
+import React from 'react';
+import { useNavigate } from 'react-router-dom';
+import { useState } from 'react';
+import axios from 'axios';
+import { onAuthStateChanged } from 'firebase/auth';
 
-const ListItem = () => {
+import './listItem.scss'
+import Details from '../details/Details';
+import { firebaseAuth } from '../../utils/firebase-config';
+
+
+export default React.memo (function ListItem ({movieData}) {
+
+ const navigate = useNavigate();
+
+ const handleClick = () => {
+  navigate("/details");
+}
+
+onAuthStateChanged(firebaseAuth, (currentUser) => {
+  if (!currentUser) navigate('/signin');
+});
+
+
   return (
     <div className='listItem'>
-        <div className="item">
-          <img src="https://d32qys9a6wm9no.cloudfront.net/images/movies/backdrop/f7/c68689cbe6e14fbf3dc6a69214dbd82a_706x397.jpeg" 
+        
+        <div className="item" variant="primary" onClick={handleClick}> 
+          <img src={`https://image.tmdb.org/t/p/w500${movieData.image}`} 
           alt="image"
           className='item_img' />
 
           <div className="title">
-            <span>THE DARK KNIGHT</span>
-          </div>
-        </div>
+            <span>{movieData.name}</span>
+          </div>          
+        </div>   
     </div>
   )
-}
-
-export default ListItem
+});

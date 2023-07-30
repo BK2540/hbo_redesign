@@ -1,16 +1,23 @@
 import { Add, ArrowBackIos, ArrowDownwardRounded, Close, NearMe, Star, StarBorderOutlined } from '@mui/icons-material';
+import { Link, useNavigate, } from 'react-router-dom';
+import { onAuthStateChanged } from 'firebase/auth';
+import { useState } from 'react';
+
 import './details.scss';
+import { firebaseAuth } from '../../utils/firebase-config';
+import video from '../../assets/video.mp4';
 
 const Details = () => {
 
-    
+    const navigate = useNavigate();
+  
   return (
     <div className='details'>
         <div className="container">
-            <ArrowBackIos className='back'/>
+            <ArrowBackIos className='back' onClick={() => navigate(-1)}/>
             <div className="video_container">
                 <div className="icon">                    
-                    <button className='normal_button'><Close/></button>
+                    <button className='normal_button'><Close onClick={() => navigate(-1)}/></button>
                     <button className='normal_button'><NearMe/></button>
                     <button className='normal_button'><ArrowDownwardRounded/></button>
                     <button className='normal_button'><Add/></button>
@@ -18,10 +25,14 @@ const Details = () => {
                 <video
                     className="video"
                     autoPlay
-                    src="https://player.vimeo.com/external/371433846.sd.mp4?s=236da2f3c0fd273d2c6d9a064f3ae35579b2bbdf&profile_id=139&oauth2_token_id=57447761"
+                    src={video}
+                    alt="video"
                 />
+                <Link to="/watch">
                 <div className="custom_button">Watch Now</div>
+                </Link>
             </div>
+            
             <div className="video_content">
                 <div className="v-header">
                     <div className="v-title">THE DARK KNIGHT</div>
@@ -47,14 +58,14 @@ const Details = () => {
                     <div className="cast_wrapper">
                     <div className="cast">
                         <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/0/0d/Christian_Bale_2009.jpg/1200px-Christian_Bale_2009.jpg" 
-                        alt="image"
-                        className='cast_img' />
+                            alt="image"
+                            className='cast_img' />
 
-                        <div className="c-name">
-                            <span>Christian Bale</span>
-                            <span className='act'>Bruce Wayne / Batman</span>
-                        </div>
-                    </div>
+                            <div   div className="c-name">
+                                <span>Christian Bale</span>
+                                <span className='act'>Bruce Wayne / Batman</span>
+                            </div>
+                    </div> 
 
                     <div className="cast">
                         <img src="https://static.wikia.nocookie.net/kingsman-the-secret-service/images/7/79/5876-michael-caine.jpg" 
@@ -88,6 +99,7 @@ const Details = () => {
                             <span className='act'>Commissioner Gordon</span>
                         </div>
                     </div>
+
                     </div>
                 </div>
 
@@ -136,6 +148,7 @@ const Details = () => {
                     </div>
                 </div>
             </div>
+    
             <img src="https://cdn.vox-cdn.com/thumbor/K1WKyMb31K-K1vvseGAyFsjfYYE=/0x0:1200x675/1200x800/filters:focal(478x31:670x223)/cdn.vox-cdn.com/uploads/chorus_image/image/60384393/0_c9S8ajFBpwX89ZuU.0.jpeg" alt="bg" className='background'/>
             <div className="overlay"/>
         </div>

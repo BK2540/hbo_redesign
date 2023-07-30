@@ -170,6 +170,25 @@ $extralarge: 1200px;
                 height: 100%;
                 border-radius: 50%;
             }
+
+            .options{
+                display: none;
+                background-color: rgba(14, 14, 14, 0.6);
+                backdrop-filter: (16px);
+                border-radius: 5px;
+                font-size: 14px;
+                color: white;
+                padding: 12px;
+            }
+
+            &:hover{
+                .options{
+                    display: flex;
+                    flex-direction: column;
+                    position: absolute;
+                    gap: 12px;
+                }
+            }
         }
 
         

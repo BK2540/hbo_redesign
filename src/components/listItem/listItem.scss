@@ -2,6 +2,8 @@ $small: 500px;
 $medium: 768px;
 $large: 992px;
 $extralarge: 1200px;
+.listItem{
+    position: relative;
 
 .item{
     position: relative;
@@ -62,9 +64,7 @@ $extralarge: 1200px;
             background-color: #2f2b4777;
             backdrop-filter: blur(16px);
             transition: all 300ms ease-in;
-        }
-
-        
+        }        
     }
 
     &:hover{
@@ -72,4 +72,15 @@ $extralarge: 1200px;
         transition: all 600ms ease-in;
         cursor: pointer;
     }
+}
+
+.modal{
+    height: 100vh;
+    width: 100vw;
+    z-index: 100;
+    position: absolute;
+    left: 0;
+    top: 0;
+    margin: 72px auto;
+}
 }

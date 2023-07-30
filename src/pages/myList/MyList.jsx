@@ -1,7 +1,6 @@
 import './myList.scss';
 import Navbar from '../../components/navbar/Navbar';
 import Footer from '../../components/footer/Footer';
-import List from '../../components/listItem/ListItem';
 
 const MyList = () => {
   return (
@@ -18,13 +17,7 @@ const MyList = () => {
             <p className='edit'>Edit</p>
         </div>
         <div className="list_container">
-            <List className="list"/>
-            <List className="list"/>
-            <List className="list"/>
-            <List className="list"/>
-            <List className="list"/>
-            <List className="list"/>
-            <List className="list"/>
+          Nothing on your list
         </div>
     
     </div>
